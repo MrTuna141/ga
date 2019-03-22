@@ -4,8 +4,8 @@
 #include <RtcDS3231.h> //Includes the library for the RTC(Real Time Clock) 
 
 // Replace with your network credentials
-const char* ssid     = "Tuna_Can-2GHz";
-const char* password = "206ED639EE";
+const char* ssid     = "";
+const char* password = "";
 int relayPin = 2; // The input to the relay pin
 
 String webPage="";
