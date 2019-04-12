@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta http-equiv=X-UA-Compatible content="ie=edge">
+    <title>CoffeMcYeet</title>
+    <script>function toggle() {
+            if (document.getElementById(onoff).innerHTML === "Kaffebryggaren är igång!"){
+            document.getElementById(onoff).innerHTML = "Kaffebryggaren är inte igång!";
+            fetch(`${location.origin}/toggle`)
+                .then(r => console.log(r))
+                .catch(e => console.error(e));
+        }else {
+            document.getElementById(onoff).innerHTML = "Kaffebryggaren är igång!";
+            fetch(`${location.origin}/toggle`)
+                .then(r => console.log(r))
+                .catch(e => console.error(e));
+            function startTime() {
+                var e = new Date, t = e.getHours(), c = e.getMinutes(), n = e.getSeconds(); c = checkTime(c), n = checkTime(n), document.getElementById(clock).innerHTML=t +":"+c+":"+n;setTimeout(startTime,500)};function checkTime(e){return e<10&& (e=0+e),e};
+    }
+        }</script>
+    <style>
+        html {
+            background-color: #fff;
+        }
+
+        .button {
+            display: block;
+            margin: auto;
+            margin-top: 30%;
+            text-decoration: none;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 30px 64px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+
+<body onload=startTime()>
+    <h1 id=onoff>Kaffebryggaren är inte igång!</h1><button class=button onclick=toggle()>Toggle</button>
+    <div id=clock></div>
+</body>
+
+</html>
