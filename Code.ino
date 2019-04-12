@@ -57,7 +57,7 @@ void setup() {
   server.begin();
 }
 
-void makeCoffeeBitch() {
+void makeCoffee() {
   digitalWrite(relayPin, HIGH);
   delay(75);
   digitalWrite(relayPin, LOW);
@@ -87,7 +87,7 @@ void loop(){
             client.println();
 
             if (header.indexOf("GET /toggle") >= 0) {
-              makeCoffeeBitch();
+              makeCoffee();
             }
             
             client.println(webPage);  //Creates a html index file that the client can accsess
@@ -122,7 +122,7 @@ void loop(){
 
     //if statement for timer
     if(hours == 3 && minutes == 50 && seconds == 0){
-        makeCoffeeBitch();
+        makeCoffee();
         
     }
 
