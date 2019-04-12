@@ -17,11 +17,19 @@ void setup() {
 Serial.begin(115200);
 
 //Homepage
-  webSite +="<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"><title>CoffeMcYeet</title><script>function toggle() {";//Webpag
-  webSite +="fetch(`${location.origin}/toggle`)";
-  webSite +=".then(r => console.log(r))";
-  webSite +=".catch(e => console.error(e));";
-  webSite +="}</script><style>; body{width:100%;height:100%}html{background-color:#f0f;width:100%;height:100%;} button{display:block;margin:auto;margin-top:40%;}</style></head><body><button onclick=\"toggle()\">Toggle</button></body></html>";
+  webPage +="<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"><title>CoffeMcYeet</title><script>function toggle() {";
+  webPage += "if(document.getElementById(\"onoff\").innerHTML === \"Kaffebryggaren är igång!\"){";
+  webPage +="document.getElementById(\"onoff\").innerHTML=\"Kaffebryggaren är inte igång!\";";
+  webPage +="fetch(`${location.origin}/toggle`)";
+  webPage +=".then(r => console.log(r))";
+  webPage +=".catch(e => console.error(e));";
+  webPage +="}else{";
+  webPage +="document.getElementById(\"onoff\").innerHTML=\"Kaffebryggaren är igång!\";";
+  webPage +="fetch(`${location.origin}/toggle`)";
+  webPage +=".then(r => console.log(r))";
+  webPage +=".catch(e => console.error(e));";
+  webPage +="function startTime(){var e=new Date,t=e.getHours(),c=e.getMinutes(),n=e.getSeconds();c=checkTime(c),n=checkTime(n),document.getElementById(\'clock\').innerHTML=t +\":\"+c+\":\"+n;setTimeout(startTime,500)};function checkTime(e){return e<10&& (e=\"0\"+e),e};";
+  webPage +="}}</script><style> html{background-color:#fff;}.button{display:block;margin:auto;margin-top:30%;text-decoration:none;border:none;background-color: #4CAF50;color:white;padding:30px 64px;text-align:center;font-size:16px;}h1{text-align:center;margin-top:10%;}</style></head><body onload=\"startTime()\"><h1 id=\"onoff\">Kaffebryggaren är inte igång!</h1><button class=\"button\" onclick=\"toggle()\">Toggle</button> <div id=\'clock\'></div></body></html>";
 
   // Connect to Wi-Fi network with SSID and password
   Serial.print("Connecting to ");
